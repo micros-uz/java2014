@@ -1,0 +1,6 @@
+1) TIOBE Index, 
+2) from BIST to Logon - OS Windows startup process
+3) a short history of programming
+4) firmware, OS Kernel, drivers, user apps
+5) Practice - create simple command line app from scratch 
+6) Practice - create the same app in the IDE
