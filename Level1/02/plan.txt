@@ -1,0 +1,11 @@
+1) Программа = алгоритм + данные
+2) Представление и хранение данных в Java программе - переменная
+3) Basic Data Types (Primitive) - byte, int, long, short, double, float, bool, char
+	http://www.tutorialspoint.com/java/java_basic_datatypes.htm
+4) Наименование переменной, допустимые символы, длина, регистрозависимость
+4) Инициализация переменной, присвоение, литерал
+5) Простейшие операторы - +, -, /, *
+6) Practice - Simple calculator for adding.
+	- жестко зашить и складывать
+	- вводить и складывать
+	- вводить с кодом операции
