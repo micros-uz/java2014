@@ -1,0 +1,20 @@
+1) Java Operators http://www.tutorialspoint.com/java/java_basic_operators.htm
+	- арифметические
+	- отношений
+	- битовые
+	- логические
+	- присваивания
+	- остальные ( тернарный if, instanceof, оператор точка)
+
+2) Java Expressions
+	кто участвует, порядок вычисления, приоритет операций, тип выражения
+
+4) Control Flow Statements
+	- if-then
+	- if-then-else
+	- switch
+	- while
+	- do-while
+	- for
+
+5) Practice - добавить четыре операции и отрефакторить (понятие метода)
