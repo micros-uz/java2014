@@ -14,10 +14,13 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+        int[] mas = new int[100];
+        int attempts = 7;
+        int index = 0;
         while(true) {
             String st = scanner.nextLine();
 
-            if (st.matches("\\d+")) break;
+            //if (st.matches("\\d+")) break;
 
             int n = Integer.parseInt(st);
 
@@ -29,6 +32,24 @@ public class Main {
                 System.out.println("Your number is less");
             else
                 System.out.println("Your number is greater");
+
+            boolean found = false;
+            for (int k = 0; k < 100; k++)
+                if (mas[k] == n){
+                    found = true;
+                    break;
+                }
+
+            if (!found) {
+                attempts--;
+            }
+
+            if (attempts == 0){
+                System.out.println("BAD");
+                break;
+            }
+
+            mas[index++] = n;
         }
     }
 }
