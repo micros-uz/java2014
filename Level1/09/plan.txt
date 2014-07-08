@@ -1,0 +1,2 @@
+1) OOD на примере проекта NuclearStation
+2) Подключение JNativeHook 
