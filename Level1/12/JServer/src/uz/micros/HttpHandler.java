@@ -1,8 +1,9 @@
 package uz.micros;
 
-import com.sun.deploy.util.StringUtils;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -38,7 +39,7 @@ public class HttpHandler {
             }while (msg != null && !msg.equals(""));
 
             handlePacket(packet);
-
+            socket.close();
         } catch (IOException e) {
             //e.printStackTrace();
         }
@@ -66,7 +67,9 @@ public class HttpHandler {
     }
 
     private void handlePost(String[] parts) {
-
+        //out.println("HTTP/1.1 302 Found");
+        //out.println("Location: /redirected");
+        //out.println();
     }
 
     private void handleGet(String url) {

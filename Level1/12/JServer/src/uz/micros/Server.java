@@ -7,7 +7,7 @@ import java.net.Socket;
 public class Server {
     public void run() {
         try {
-            ServerSocket socket = new ServerSocket(80);
+            ServerSocket socket = new ServerSocket(8080);
 
             for(;;) {
                 Socket client = socket.accept();
