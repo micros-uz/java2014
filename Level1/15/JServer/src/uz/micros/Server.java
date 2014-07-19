@@ -1,8 +1,8 @@
 package uz.micros;
 
-
 import uz.micros.servletapi.Servlet;
 import uz.micros.sites.BlogServlet;
+import uz.micros.sites.ForumServlet;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,11 +21,9 @@ public class Server {
 
     public void run() {
         System.out.println("Server starting...");
-
         loadServlets();
 
         System.out.println("Server started");
-        System.out.println("Current dir: " + new File(".").getAbsolutePath());
 
         try {
             ServerSocket socket = new ServerSocket(80);
@@ -47,27 +45,31 @@ public class Server {
     }
 
     private void loadServlets() {
-        Path sitesPath = null;
         ServletLoader loader = new ServletLoader();
 
         try {
-            sitesPath = Paths.get(new File(".").getCanonicalPath(), "sites");
+            Path sitesPath = Paths.get(new File(".").getCanonicalPath(), "sites");
 
-            for (File f : sitesPath.toFile().listFiles()) {
-                System.out.println(f.getName());
+            for (File f : sitesPath.toFile().listFiles()){
+                System.out.println(f.getCanonicalPath());
+
                 Servlet servlet = loader.loadServlet(f);
+
                 if (servlet != null)
                     servlets.add(servlet);
             }
 
+
             servlets.add(new BlogServlet());
+            servlets.add(new ForumServlet());
 
             for (Servlet servlet : servlets) {
                 sites.put(servlet.getSiteName(), servlet);
+                System.out.println("Servlet loaded: " + servlet.getSiteName());
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

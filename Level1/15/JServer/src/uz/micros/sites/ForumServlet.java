@@ -4,15 +4,16 @@ package uz.micros.sites;
 import uz.micros.servletapi.Request;
 import uz.micros.servletapi.Servlet;
 
-public class BlogServlet implements Servlet {
+public class ForumServlet implements Servlet {
     @Override
     public String getSiteName() {
-        return "blog";
+        return "forum";
     }
 
     @Override
     public String doGet(Request req) {
-        return "<h1>BLOG - req from (" + req.getUrl() +") /h1>";
+        System.out.println(req.getUrl());
+        return "<h1>Hello from phpBB forum!</h1>";
     }
 
     @Override
