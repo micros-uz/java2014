@@ -10,11 +10,11 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/../out/artifacts/ServletApi_jar" />
+          <root url="file://$MODULE_DIR$/../Lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$MODULE_DIR$/../out/artifacts/ServletApi_jar" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../Lib" recursive="false" />
       </library>
     </orderEntry>
   </component>

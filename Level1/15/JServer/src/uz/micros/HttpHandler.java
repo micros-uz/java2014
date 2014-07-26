@@ -95,26 +95,26 @@ public class HttpHandler {
 
     private void handlePost(Servlet servlet, Request request) {
         int len = 0;
-        for (String s: request.getHeaders())
-            if (s.contains("Content-Length")){
-                String part = s.split(": ")[1];
+
+        for (String header: request.getHeaders())
+            if (header.contains("Content-Length:")){
+                String part = header.split(" ")[1];
                 len = Integer.valueOf(part);
                 break;
             }
-        String formData = "";
-        if (len > 0) {
+
+        if (len > 0){
             char[] buf = new char[len];
             try {
                 in.read(buf, 0, len);
-                formData = String.valueOf(buf);
-                request.getHeaders().add(formData);
+                request.getHeaders().add(String.valueOf(buf));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-
         String res = servlet.doPost(request);
+
         out.println("HTTP/1.1 302 Found");
         out.println("Location: " + res);
         out.println();

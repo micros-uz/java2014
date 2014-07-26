@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="ServletApi:jar">
+  <artifact type="jar" name="ServletApi:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/ServletApi_jar</output-path>
     <root id="archive" name="ServletApi.jar">
       <element id="module-output" name="ServletApi" />

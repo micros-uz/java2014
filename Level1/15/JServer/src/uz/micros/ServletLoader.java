@@ -4,12 +4,13 @@ import uz.micros.servletapi.Servlet;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
 
 public class ServletLoader {
@@ -17,7 +18,7 @@ public class ServletLoader {
         Servlet res = null;
 
         try {
-            Class<?> servletClass = findClassesInJar(Servlet.class, jarFile.getCanonicalPath());
+            Class<?> servletClass = findClassInJar(Servlet.class, jarFile.getCanonicalPath());
             res = (Servlet)servletClass.newInstance();
         } catch (IOException e) {
             e.printStackTrace();
@@ -26,42 +27,44 @@ public class ServletLoader {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+
         return res;
     }
 
-    private  Class<?> findClassesInJar(final Class<?> baseInterface, final String jarName) throws IOException {
-        final List<String> classesTobeReturned = new ArrayList<String>();
-        if (!jarName.equals("")) {
-            final String jarFullPath = File.separator + jarName;
-            final ClassLoader classLoader = this.getClass().getClassLoader();
-            JarInputStream jarFile = null;
-            URLClassLoader ucl = null;
-            final URL url = new URL("jar:file:" + jarFullPath + "!/");
-            ucl = new URLClassLoader(new URL[]{url}, classLoader);
-            jarFile = new JarInputStream(new FileInputStream(jarFullPath));
-            JarEntry jarEntry;
-            while (true) {
-                jarEntry = jarFile.getNextJarEntry();
-                if (jarEntry == null)
-                    break;
-                if (jarEntry.getName().endsWith(".class")) {
-                    String classname = jarEntry.getName().replaceAll("/", "\\.");
-                    classname = classname.substring(0, classname.length() - 6);
-                    if (!classname.contains("$")) {
-                        try {
-                            final Class<?> myLoadedClass = Class.forName(classname, true, ucl);
-                            if (baseInterface.isAssignableFrom(myLoadedClass)) {
-                                return myLoadedClass;
-                            }
-                        } catch (final ClassNotFoundException e) {
+    private Class<?> findClassInJar(Class<Servlet> servletClass, String jarName) throws IOException {
+        Class<?> res = null;
 
+        if (!jarName.equals("")){
+            ClassLoader loader = this.getClass().getClassLoader();
+            String jarFullName = File.separator + jarName;
+            URL url = new URL("jar:file:" + jarFullName + "!/");
+            URLClassLoader ucl = new URLClassLoader(new URL[]{url}, loader);
+            JarInputStream jarFile = new JarInputStream(new FileInputStream(jarFullName));
+            JarEntry jarEntry;
+
+            while(true){
+                jarEntry = jarFile.getNextJarEntry();
+
+                if (jarEntry == null) break;
+
+                if (jarEntry.getName().endsWith(".class")){
+                    String className = jarEntry.getName().replaceAll("/", "\\.");
+                    className = className.substring(0, className.length() - 6);
+                    if (!className.contains("$")){
+                        try {
+                            Class<?> myClass = Class.forName(className, true, ucl);
+                            if (servletClass.isAssignableFrom(myClass)) {
+                                res = myClass;
+                                break;
+                            }
+                        } catch (ClassNotFoundException e) {
+                            //e.printStackTrace();
                         }
                     }
                 }
             }
-            return null;
         }
 
-        return null;
+        return res;
     }
 }
