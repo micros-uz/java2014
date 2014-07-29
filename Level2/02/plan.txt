@@ -12,3 +12,4 @@ JDK 1.2 Swing - AWT based. JFrame, JWindow and JDialog - root containers (with r
 4) ChatManager - to connect GUI and NETWORK parts
 6) Add Server and start it.
 7) Add Settings (может потребоваться создать пакет вместо дефолтного, иначе Setting не импортируется)
+8) Add Client
