@@ -1,0 +1,14 @@
+0) История.
+JDK 1.0. AWT. heavyweight components. 
+	- Разный вид на разных платформах. 
+	- Низкая производительность - частые переключениея из JVM в ядро (графика в винде в ядре)
+	- Трудно создавать свои компоненты
+JDK 1.1. AWT - lightweight components.
+JDK 1.2 Swing - AWT based. JFrame, JWindow and JDialog - root containers (with root pane).
+
+1) Create gui package
+2) Create gui/MainWindow.form
+3) Create Simple GUI interface (2 splitters, List, MainText Tab and Message Text Pane)
+4) ChatManager - to connect GUI and NETWORK parts
+6) Add Server and start it.
+7) Add Settings (может потребоваться создать пакет вместо дефолтного, иначе Setting не импортируется)
