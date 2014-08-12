@@ -9,17 +9,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Bootstrapper.init();
+        //Bootstrapper.init();
 
-/*        CmdLineArgsManager argsMgr = new CmdLineArgsManager();
+        CmdLineArgsManager argsMgr = new CmdLineArgsManager();
 
         argsMgr.init(args);
 
         SettingManager sm = new SettingManagerInMem(argsMgr);
 
-        new ChatManager(sm).start();*/
+        new ChatManager(sm).start();
 
-        IoC.get(CmdLineArgsManager.class).init(args);
-        IoC.get(SettingManager.class).isServer();
+        //IoC.get(CmdLineArgsManager.class).init(args);
+        //IoC.get(SettingManager.class).isServer();
     }
 }

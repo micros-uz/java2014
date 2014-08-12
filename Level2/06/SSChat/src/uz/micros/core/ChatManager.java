@@ -38,25 +38,29 @@ public class ChatManager implements ServerSink, ClientSink, GuiSink, ConnectorSi
 
     @Override
     public void gotMsg(String msg, Client sender) {
+        String decodedMsg = decode(msg);
+
         if (settingManager.isServer()) {
             int n = msg.indexOf(":");
 
             if (n > -1) {
+                // if the message format is valid
+
                 if (n == 0) {
                     sendToAll(msg, sender);
 
-                    mainWindow.newMsg(msg, sender.getName());
+                    mainWindow.newMsg(decodedMsg, sender.getName());
                 } else {
                     String name = msg.substring(0, n);
 
                     if (name.equals(settingManager.getUserName()))
-                        mainWindow.newMsg(msg, sender.getName());
+                        mainWindow.newMsg(decodedMsg, sender.getName());
                     else
                         sendTo(msg.substring(n + 1, msg.length() - 1), name);
                 }
             }
         } else {
-            mainWindow.newMsg(msg, sender.getName());
+            mainWindow.newMsg(decodedMsg, sender.getName());
         }
     }
 
@@ -102,6 +106,9 @@ public class ChatManager implements ServerSink, ClientSink, GuiSink, ConnectorSi
 
     @Override
     public void sendMsg(String msg, String target) {
+
+        msg = encode(msg);
+
         if (settingManager.isServer()){
             if (target == null)
                 sendToAll(":" + msg, null);
@@ -120,5 +127,13 @@ public class ChatManager implements ServerSink, ClientSink, GuiSink, ConnectorSi
     public void connected(Socket socket) {
         client = new Client(this, true);
         client.start(socket);
+    }
+
+    private String encode(String msg){
+        return msg.replace("\r\n", "\0");
+    }
+
+    private String decode(String msg){
+        return msg.replace("\0", "\r\n");
     }
 }

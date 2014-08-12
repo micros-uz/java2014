@@ -8,7 +8,7 @@ import java.util.Map;
 public class IoC {
 
     private static Map<Class<?>, Class<?>> ctx = new HashMap<Class<?>, Class<?>>();
-    999999999999999999999private static Map<Class<?>, Class<?>> cache = new HashMap<Class<?>, Class<?>>();
+    private static Map<Class<?>, Class<?>> cache = new HashMap<Class<?>, Class<?>>();
 
     public static void register(Class<?> intf, Class<?> impl, boolean isSingleton){
         ctx.put(intf, impl);
