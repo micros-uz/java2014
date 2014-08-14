@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title></title>
+
+    <link rel="stylesheet" type="text/css"
+          href="/resources/css/site.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="/resources/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h1>Hi From Thymeleaf !!!</h1>
+
+    <h2 th:text="${name}">sdfsdfsd</h2>
+
+    <ul>
+        <li th:each="s : ${posts}">
+            Post Title is <span th:text="${s.title}">Example</span>
+        </li>
+    </ul>
+
+    <form action="/save" method="post">
+        <input type="text" name="title"/>
+        <input type="submit" value="Save"/>
+    </form>
+
+    <script src="/resources/js/jquery-2.1.1.min.js"></script>
+    <script src="/resources/js/bootstrap.min.js"></script>
+    <script src="/resources/js/site.js" language="JavaScript"/>
+</body>
+</html>
