@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="master">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2>Hello World from Thymeleaf View!!!</h2>
+
+    <h3 th:text="${name}"></h3>
+
+    <p class="author-name"> My name is <span th:text="${author.name}"></span></p>
+
+    <ul>
+        <li th:each="s : ${authors}">
+            Name is <span th:text="${s.name}"></span>
+        </li>
+    </ul>
+
+    <form action="/save" method="post">
+        <input type="text" name="title"/>
+        <input type="submit" value="Save"/>
+    </form>
+
+    <form action="/save2" th:object="${newAuthor}" method="post">
+        <input type="text" th:field="*{name}"/>
+        <input type="submit" value="Save"/>
+    </form>
+</section>
+
+</body>
+</html>
