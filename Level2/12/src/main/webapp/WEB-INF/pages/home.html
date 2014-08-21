@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="master">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+</head>
+<body>
+<section layout:fragment="sidebar">
+    <div layout:include="store/catalog :: catalog"></div>
+</section>
+<section layout:fragment="content">
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="master">
+<head>
+    <title>Post</title>
+</head>
+<body>
+<section layout:fragment="content">
+
+    <div class="row">
+        <div class="col-md-6 post">
+            <h2 th:text="${post.subject}"></h2>
+
+            <p class="post-date" th:text="${post.date}"></p>
+
+            <pre th:text="${post.text}"></pre>
+            <div class="pull-right">
+                <a class="btn btn-default" data-th-href="@{'/blog/posts/edit/' + ${post.id}}">Edit</a>
+                <a class="btn btn-default" data-th-href="@{'/blog/posts/delete/' + ${post.id}}">Delete</a>
+            </div>
+        </div>
+    </div>
+
+    <p><h1>Comments</h1></p>
+
+    <form th:action="@{/blog/comments}" method="post" th:object="${newComment}">
+        <input type="hidden" name="id" data-th-field="*{post.id}" />
+
+        <div class="row">
+            <div class="col-md-6">
+                <textarea th:field="*{text}" class="form-control" cols="1000" rows="5" autofocus="autofocus"></textarea>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="row comment" th:each="comment : ${post.comments}">
+        <div class="col-md-6">
+            <p class="post-date" th:text="${comment.date}"></p>
+
+            <p th:text="${comment.author}"></p>
+
+            <p th:text="${comment.text}"></p>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

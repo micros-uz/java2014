@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="master">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Books</title>
+</head>
+<body>
+<section layout:fragment="sidebar">
+    <div layout:include="store/catalog :: catalog"></div>
+</section>
+<section layout:fragment="content">
+    <div class="books-pane">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="book-items-header">
+                    Good Books
+                </div>
+            </div>
+        </div>
+
+        <a th:href="@{'/store/books/create/' + ${genreId}}">Add New Book</a>
+
+        <div class="row">
+            <div class="col-md-3" th:each="book : ${books}">
+                <div class="book-item">
+                    <div class="book-item-img-box">
+                        <img class="book-item-img centred"
+                             th:attr="src=@{'/resources/images/' + ${book.id} + '.jpg'}"
+                             alt="Image"/>
+                    </div>
+                    <div class="book-item-author">
+                        <a th:href="@{'/store/books/author/' + ${book.author.id}}"
+                           th:text="${book.author.name}"/>
+                    </div>
+                    <div class="book-item-title">
+                        <p class="centred"><a th:href="@{'/store/books/' + ${book.id}}"
+                                              th:text="${book.shortTitle()}"/>
+                        </p>
+                    </div>
+                    <div class="book-item-price">
+                        <b th:text="${book.price}"></b>
+                    </div>
+                    <div class="btn-group" style="width:100%">
+                        <div class="pull-right book-item-buttons-pane">
+                            <a class="btn btn-default btn-xs" href="#"><span
+                                    class="glyphicon glyphicon-shopping-cart"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="master">
+<head>
+    <title>Details</title>
+</head>
+<body>
+<section layout:fragment="sidebar">
+    <div layout:include="store/catalog :: catalog"></div>
+</section>
+<section layout:fragment="content">
+    <div class="row">
+        <div class="col-md-4">
+            <img class="centred" th:attr="src=@{'/resources/images/' + ${book.id} + '.jpg'}" alt="Image" width="200"/>
+
+            <div class="book-item-price det-price">
+                <b th:text="${book.price}"></b>
+            </div>
+            <div>
+                <!--we use data-th-value instead of data-bookid since last is not parsed by thymeleaf-->
+                <button class="btn btn-primary centred">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Add to Cart
+                </button>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <!--@Html.HiddenFor(model=>model.BookId)-->
+            <span><strong th:text="${book.title}"></strong></span>
+            <br></br>
+            <span th:text="${book.author.name}"></span>
+            <br></br>
+            <span>Published Year: </span><b><span th:text="${book.year}"></span></b><br/>
+            <span>Pages: </span><b><span th:text="${book.pages}"></span></b><br/>
+            <span>ISBN: </span><b><span th:text="${book.isbn}"></span></b><br/>
+            <br></br><br></br>
+
+            <div>
+                <span class="overview-hdr">Overview - </span>
+                <span th:text="${book.desc}"></span>
+                <!--                @if (Model.IsDescTooLong)
+                                {
+                                <a href="#overview">Read more...</a>
+                                }-->
+            </div>
+            <br></br>
+
+            <div class="hr-top"></div>
+        </div>
+    </div>
+    <br></br><br></br><br></br><br></br>
+
+    <p>
+        <a data-th-href="@{'/store/genres/' + ${book.genre.id}}">Back to List</a>
+    </p>
+
+</section>
+</body>
+</html>
