@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title></title>
+</head>
+
+<body layout:fragment="cat_fragment">
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Catalog</h3>
+    </div>
+    <div class="list-group">
+        <div th:each="genre : ${genres}">
+            <a class="list-group-item" href="#"
+               th:href="@{'/store/genres/' + ${genre.id}}"
+               th:text="${genre.title}"></a>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

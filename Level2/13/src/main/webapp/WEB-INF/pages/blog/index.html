@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+        data-layout-decorator="master">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Blog Index</title>
+</head>
+<body>
+<section data-layout-fragment="content">
+    <h2 data-th-text="${blog.title}"></h2>
+
+    <div class="row" th:each="post: ${blog.posts}">
+        <div class="col-md-6">
+            <h2><a th:href="@{'/blog/posts/' + ${post.id}}" th:text="${post.subject}"></a></h2>
+
+            <p class="post-date" th:text="${post.date}"></p>
+
+            <pre th:text="${post.shortText}"></pre>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>
