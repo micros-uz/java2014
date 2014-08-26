@@ -4,22 +4,19 @@
 <head>
     <title></title>
 </head>
-
-<body layout:fragment="cat_fragment">
-
+<body layout:fragment="catalog">
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Catalog</h3>
+        <h3 class="panel-title">Categories</h3>
     </div>
     <div class="list-group">
-        <div th:each="genre : ${genres}">
-            <a class="list-group-item" href="#"
-               th:href="@{'/store/genres/' + ${genre.id}}"
-               th:text="${genre.title}"></a>
+        <div data-th-each="genre : ${genres}">
+            <a class="list-group-item"
+               href="#"
+               data-th-href="@{'/store/genres/' + ${genre.id}}"
+               data-th-text="${genre.title}"></a>
         </div>
     </div>
 </div>
-
 </body>
-
 </html>

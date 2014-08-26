@@ -1,10 +1,10 @@
 package uz.micros.jstore.util;
 
-import uz.micros.jstore.entity.blog.Post;
-
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DbManager {
     private static Connection connect(){
@@ -13,8 +13,8 @@ public class DbManager {
         Connection res = null;
 
         try {
-            //Class.forName("org.postgresql.Driver");
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
+            //Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver loaded!");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -23,8 +23,8 @@ public class DbManager {
 
         try {
              res = DriverManager.getConnection(
-                    "jdbc:mysql://127.0.0.1:3306/jstore",
-                    "root", "root");
+                    "jdbc:postgresql://127.0.0.1:5432/jstore",
+                    "postgres", "dev1234");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -32,29 +32,41 @@ public class DbManager {
         return res;
     }
 
-    public static List<Post> runQuery(String query) {
+    public static List<Map<String, Object>>  runQuery(String query) {
         Connection conn = connect();
+        List<Map<String, Object>> list = null;
+        String err = null;
 
-        List<Post> list = new ArrayList<>();
+        if (conn != null) {
+            try{
+                Statement st = conn.createStatement();
+                ResultSet rs = st.executeQuery(query);
 
-        try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(query);
-
-
-            while(rs.next()){
-                Post p = new Post();
-                p.setId(rs.getInt(1));
-                p.setSubject(rs.getString(2));
-                p.setDate(rs.getDate(3));
-                p.setText(rs.getString(4));
-
-                list.add(p);
+                list = parseResultSet(rs);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            catch(SQLException ex){
+                ex.printStackTrace();
+            }
         }
 
         return list;
+    }
+
+    private static List<Map<String, Object>> parseResultSet(ResultSet resultSet) throws SQLException {
+        List<Map<String, Object>> rows = new ArrayList<>();
+        ResultSetMetaData metaData = resultSet.getMetaData();
+        int columnCount = metaData.getColumnCount();
+
+        while (resultSet.next()) {
+            Map<String, Object> columns = new LinkedHashMap<String, Object>();
+
+            for (int i = 1; i <= columnCount; i++) {
+                columns.put(metaData.getColumnLabel(i), resultSet.getObject(i));
+            }
+
+            rows.add(columns);
+        }
+
+        return rows;
     }
 }

@@ -1,20 +1,100 @@
-.author-name{
-    background-color: darkseagreen;
+.bold {
+    font-weight: bold;
 }
 
-.post-date{
-    color:gray;
+.post-date {
+    color: gray;
 }
 
-.comment{
-    margin-bottom: 20px;
+.books-pane {
+    margin: 0 10px 0;
 }
 
-.post{
-    padding-left: 0px;
-    padding-right: 0px;
+.book-items-header {
+    padding-bottom: 9px;
+    margin: 20px 0 20px;
+    border-bottom: 1px solid #eeeeee;
 }
 
-textarea {
-    resize: none;
+.book-item {
+    border: 1px solid #d6e0e6;
+    border-radius: 0 0 2px 0;
+    margin: 10px 0;
+}
+
+.book-item-author {
+    font-size: small;
+    text-align: center;
+    padding: 2px;
+    color: #0c8342;
+}
+
+.book-item-title {
+    margin: 0 10px 0 10px;
+    min-height: 70px;
+    font-size: small;
+}
+
+.book-item-price {
+    color: Green;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.book-item-img-box {
+    padding: 10px 0;
+}
+
+.book-item-img {
+    height: 120px;
+    border-radius: 4px;
+    border: 1px solid #dcd5d5;
+}
+
+.centred {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.book-item-buttons {
+    padding: 3px;
+}
+
+.book-item-buttons-pane {
+    margin: 0 5px 5px 0;
+}
+
+.det-price {
+    text-align: center;
+    padding: 10px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+}
+
+input[readonly] {
+    background-color: white !important;
+    cursor: text !important;
+}
+
+.field-error {
+    color: red;
 }

@@ -7,7 +7,7 @@
 </head>
 <body>
 <section layout:fragment="sidebar">
-    <div layout:include="store/catalog :: cat_fragment"></div>
+    <div layout:include="store/catalog :: catalog"></div>
 </section>
 <section layout:fragment="content">
     <div class="row">
@@ -18,7 +18,7 @@
                 <b th:text="${book.price}"></b>
             </div>
             <div>
-                <!--we use data-th-value instead of data-bookid since last is not parsed by thymeleaf-->
+                <!--we use th:value instead of data-bookid since last is not parsed by thymeleaf-->
                 <button class="btn btn-primary centred">
                     <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Add to Cart
                 </button>
@@ -51,7 +51,18 @@
     <br></br><br></br><br></br><br></br>
 
     <p>
-        <a data-th-href="@{'/store/genres/' + ${book.genre.id}}">Back to List</a>
+        <a th:href="@{'/store/genres/' + ${book.genre.id}}">Back to List</a>
+
+        <a th:href="@{'/store/books/edit/' + ${book.id}}">
+            <span class="glyphicon glyphicon-edit"/>
+        </a>
+        <!--TODO - make POST request for DELETE!-->
+        <a th:href="@{'/store/books/delete/' + ${book.id}}">
+        <!--th:value="${book.id}"
+           data-bind="click: addToCartVM.delBook">-->
+
+            <span class="glyphicon glyphicon-remove"/>
+        </a>        
     </p>
 
 </section>

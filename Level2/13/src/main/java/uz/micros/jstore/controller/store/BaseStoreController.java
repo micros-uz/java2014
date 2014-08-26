@@ -8,12 +8,11 @@ import uz.micros.jstore.service.store.GenreService;
 import java.util.List;
 
 public abstract class BaseStoreController {
-
     @Autowired
-    private GenreService genreService;
+    private GenreService service;
 
     @ModelAttribute("genres")
-         public List<Genre> getGenres(){
-        return genreService.getAll();
+    public List<Genre> getGenres(){
+        return service.getGenres();
     }
 }

@@ -17,6 +17,7 @@ insert into genres (title) values ('Computer Science');
 insert into genres (title) values ('Kid''s reading');
 insert into genres (title) values ('Science & Technology');
 
+insert into Authors (Name) values ('Эспозито Д.');
 insert into Authors (Name) values ('Руссинович М.');
 insert into Authors (Name) values ('Дж. Рихтер');
 insert into Authors (Name) values ('Таненбаум Э. С.');
@@ -27,7 +28,6 @@ insert into Authors (Name) values ('Уайт Т.');
 insert into Authors (Name) values ('Стариков Н.В.');
 insert into Authors (Name) values ('Млечин Л.М.');
 insert into Authors (Name) values ('Корнеева Е.А.');
-insert into Authors (Name) values ('Эспозито Д.');
 
 insert into Series (Genre_Id, Title) values (9, 'Классика computer science');
 insert into Series (Genre_Id, Title) values (9, 'Мастер-класс');

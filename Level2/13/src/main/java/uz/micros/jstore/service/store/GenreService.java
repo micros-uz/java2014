@@ -9,10 +9,11 @@ import java.util.List;
 
 @Service
 public class GenreService {
+
     @Autowired
     private GenreRepository genreRepository;
 
-    public List<Genre> getAll(){
+    public List<Genre> getGenres() {
         return genreRepository.findAll();
     }
 }

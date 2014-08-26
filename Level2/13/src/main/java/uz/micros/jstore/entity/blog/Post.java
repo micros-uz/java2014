@@ -1,23 +1,26 @@
 package uz.micros.jstore.entity.blog;
 
+import uz.micros.jstore.entity.BaseEntity;
+
+import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
-public class Post {
-    private int id;
+@Entity
+@Table(name = "posts")
+public class Post extends BaseEntity{
+
+    @Column(nullable = false, columnDefinition = "varchar(120)")
     private String subject;
+    @Column(nullable = false, columnDefinition = "varchar(4096)")
     private String text;
+    @Column(nullable = false)
     private Date date;
+    @Column(nullable = false)
     private String author;
-    private List<Comment> comments;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private Set<Comment> comments;
 
     public String getSubject() {
         return subject;
@@ -57,11 +60,11 @@ public class Post {
         this.author = author;
     }
 
-    public List<Comment> getComments() {
+    public Set<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
+    public void setComments(Set<Comment> comments) {
         this.comments = comments;
     }
 }

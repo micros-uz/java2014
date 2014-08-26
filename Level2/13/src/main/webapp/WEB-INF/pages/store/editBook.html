@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="master">
+<head>
+    <title>Create</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Create new book</h2>
+
+            <form th:action="@{/store/books}"
+                  th:object="${book}" method="post"
+                  enctype="multipart/form-data">
+                <input type="hidden" name="id" th:field="*{id}"/>
+                <ul>
+                    <li th:each="e : ${#fields.detailedErrors()}" th:class="${e.global}? globalerr : fielderr">
+                        <span th:text="${e.global}? '*' : ${e.fieldName}">The field name</span> |
+                        <span th:text="${e.message}">The error message</span>
+                    </li>
+                </ul>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="control-label">Title</label>
+                            <span class="field-error" th:if="${#fields.hasErrors('title')}">Нельзя совсем пустой</span>
+                            <input class="form-control" th:field="*{title}" autofocus="autofocus"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Year</label>
+                            <span class="field-error" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span>
+                            <input class="form-control" th:field="*{year}"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Pages</label>
+                            <span class="field-error" th:if="${#fields.hasErrors('pages')}" th:errors="*{pages}"></span>
+                            <input class="form-control" th:field="*{pages}"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ISBN</label>
+                            <span class="field-error" th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></span>
+                            <input class="form-control" th:field="*{isbn}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="control-label">Genre</label>
+                            <select id="genre" th:field="*{genre}" class="form-control">
+                                <option th:each="g : ${genres}" th:value="${g}" th:text="${g}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="display:none;margin:25px 0px">
+                        <a role="button" data-toggle="modal" href="#addGenre" class="btn btn-primary">Add New</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="control-label">Author</label>
+                            <select id="author" th:field="*{author}" class="form-control">
+                                <option th:each="a : ${authors}" th:value="${a}" th:text="${a}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="display:none;margin:25px 0px">
+                        <a role="button" data-toggle="modal" href="#addAuthor" class="btn btn-primary">Add New</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="control-label">Price</label>
+                            <span class="field-error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+                            <input class="form-control" th:field="*{price}"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Image</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                        <span class="btn btn-primary btn-file">
+                                            Browse&hellip; <input name="file" id="file" type="file" accept="image/jpeg, image/png"/>
+                                        </span>
+                                    <input class="form-control" style="width: 72%;"/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Description</label>
+                            <span class="field-error" th:if="${#fields.hasErrors('desc')}" th:errors="*{desc}"></span>
+                            <textarea class="form-control" th:field="*{desc}" cols="20" rows="5"/>
+                        </div>
+                        <p>
+                            <input type="submit" class="btn btn-primary" value="Save"/>
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <img id="preview" th:attr="src=@{'/resources/images/' + ${id} + '.jpg'}"
+                             alt="Image" width="150" height="200"/>
+                    </div>
+                </div>
+<!--                <div class="modal fade" id="addGenre" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">New Genre</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="from-group">
+                                    <label class="control-label">Title</label>
+                                    <input class="form-control" th:field="*{genre.title}"/>
+                                </div>
+                                <div class="from-group">
+                                    <label class="control-label">Description</label>
+                                    <input class="form-control" th:field="*{genre.desc}"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="saveGenre" onclick="saveNewGenre();">
+                                    Save changes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="addAuthor" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">New Author</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="from-group">
+                                    <label class="control-label">Name</label>
+                                    <input class="form-control" th:field="*{author.name}"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="saveAuthor"
+                                        onclick="saveNewAuthor();">Save changes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a href="#">Back to List</a>
+    </div>
+</section>
+</body>
+</html>

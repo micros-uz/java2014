@@ -8,6 +8,7 @@
 <body>
 <section data-layout-fragment="content">
     <h2 data-th-text="${blog.title}"></h2>
+    <a th:href="@{/blog/posts/create}">Create New Post</a>
 
     <div class="row" th:each="post: ${blog.posts}">
         <div class="col-md-6">

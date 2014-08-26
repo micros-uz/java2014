@@ -2,44 +2,36 @@ package uz.micros.jstore.service.blog;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uz.micros.jstore.entity.blog.Blog;
-import uz.micros.jstore.entity.blog.Comment;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import uz.micros.jstore.entity.blog.Post;
+import uz.micros.jstore.repository.PostRepository;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 @Service
 public class PostService {
 
     @Autowired
-    private BlogService blogSvc;
+    private PostRepository postRepository;
 
     public Post get(int id) {
-
-        Blog blog = blogSvc.getBlog();
-
-        for(Post post : blog.getPosts()){
-            if (post.getId() == id){
-                Comment comment = new Comment();
-                comment.setDate(new Date());
-                comment.setAuthor("Davron");
-                comment.setText("Urtoqlar! Let's work!");
-
-                List<Comment> list = new ArrayList<Comment>();
-                list.add(comment);
-                list.add(comment);
-                list.add(comment);
-                list.add(comment);
-
-                post.setComments(list);
-
-                return post;
-            }
-        }
-
-        return null;
+        Post post = postRepository.findOne(id);
+        return post;
     }
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+    public Post save(Post post) {
+        if (post.getDate() == null)
+            post.setDate(new Date());
+        if (post.getAuthor() == null)
+            post.setAuthor("Anonymous");
+
+        return postRepository.saveAndFlush(post);
+    }
+
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+    public void delete(int id) {
+        postRepository.delete(id);
+    }
+
 }

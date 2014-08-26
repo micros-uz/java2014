@@ -1,0 +1,241 @@
+18:00:56,571  INFO ContextLoader:285 - Root WebApplicationContext: initialization started
+18:00:56,586  INFO AnnotationConfigWebApplicationContext:513 - Refreshing Root WebApplicationContext: startup date [Sat Aug 23 18:00:56 UZT 2014]; root of context hierarchy
+18:00:56,625  INFO AnnotationConfigWebApplicationContext:208 - Registering annotated classes: [class uz.micros.jstore.config.AppConfig]
+18:00:56,867  WARN ConfigurationClassEnhancer:304 - @Bean method AppConfig.getPropertyPlaceholderConfigurer is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean Javadoc for complete details
+18:00:56,899  INFO PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+18:00:56,917  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+18:00:57,120  INFO LocalContainerEntityManagerFactoryBean:332 - Building JPA container EntityManagerFactory for persistence unit 'default'
+18:00:57,182  INFO Version:54 - HHH000412: Hibernate Core {4.3.5.Final}
+18:00:57,187  INFO Environment:239 - HHH000206: hibernate.properties not found
+18:00:57,192  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+18:00:57,374  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+18:00:57,722  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+18:00:57,734  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+18:00:57,837  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+18:00:58,114  INFO SchemaUpdate:182 - HHH000228: Running hbm2ddl schema update
+18:00:58,118  INFO SchemaUpdate:193 - HHH000102: Fetching database metadata
+18:00:58,124  INFO SchemaUpdate:205 - HHH000396: Updating schema
+18:00:58,169  INFO TableMetadata:66 - HHH000261: Table found: jstore.books
+18:00:58,172  INFO TableMetadata:67 - HHH000037: Columns: [pages, year, price, isbn, description, id, author_id, title, genre_id, series_id]
+18:00:58,179  INFO TableMetadata:69 - HHH000108: Foreign keys: [fk_65fm4ipog0u9y8obtm60r1e8u, fk_73o0d4iiu58livxbr7m3yl3qj, fk_s6osj27ckh3bidng4qku1oes]
+18:00:58,186  INFO TableMetadata:70 - HHH000126: Indexes: [uk_ao322efrqvfag6grrkctx03jn, fk_65fm4ipog0u9y8obtm60r1e8u, fk_73o0d4iiu58livxbr7m3yl3qj, fk_s6osj27ckh3bidng4qku1oes, primary]
+18:00:58,219  INFO TableMetadata:66 - HHH000261: Table found: jstore.genres
+18:00:58,224  INFO TableMetadata:67 - HHH000037: Columns: [description, id, title]
+18:00:58,232  INFO TableMetadata:69 - HHH000108: Foreign keys: []
+18:00:58,236  INFO TableMetadata:70 - HHH000126: Indexes: [uk_tn7o6am80axewhek380yntaav, primary]
+18:00:58,269  INFO TableMetadata:66 - HHH000261: Table found: jstore.authors
+18:00:58,274  INFO TableMetadata:67 - HHH000037: Columns: [name, id]
+18:00:58,278  INFO TableMetadata:69 - HHH000108: Foreign keys: []
+18:00:58,283  INFO TableMetadata:70 - HHH000126: Indexes: [uk_9mhkwvnfaarcalo4noabrin5j, primary]
+18:00:58,318  INFO TableMetadata:66 - HHH000261: Table found: jstore.comments
+18:00:58,323  INFO TableMetadata:67 - HHH000037: Columns: [date, post_id, author, id, text]
+18:00:58,336  INFO TableMetadata:69 - HHH000108: Foreign keys: [fk_2ocgo3lfadb3wq0tx8wyt7sj2]
+18:00:58,350  INFO TableMetadata:70 - HHH000126: Indexes: [fk_2ocgo3lfadb3wq0tx8wyt7sj2, primary]
+18:00:58,384  INFO TableMetadata:66 - HHH000261: Table found: jstore.posts
+18:00:58,390  INFO TableMetadata:67 - HHH000037: Columns: [date, author, subject, id, text]
+18:00:58,402  INFO TableMetadata:69 - HHH000108: Foreign keys: []
+18:00:58,407  INFO TableMetadata:70 - HHH000126: Indexes: [primary]
+18:00:58,445  INFO TableMetadata:66 - HHH000261: Table found: jstore.series
+18:00:58,453  INFO TableMetadata:67 - HHH000037: Columns: [description, id, title, genre_id]
+18:00:58,466  INFO TableMetadata:69 - HHH000108: Foreign keys: [fk_olu2mv1qpydxk2uypsx2h9rls]
+18:00:58,479  INFO TableMetadata:70 - HHH000126: Indexes: [uk_hsvdwda43ces5322tlgcgl4sk, fk_olu2mv1qpydxk2uypsx2h9rls, primary]
+18:00:58,492  INFO SchemaUpdate:242 - HHH000232: Schema update complete
+18:00:59,117  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.blog.BlogController.blogIndex(org.springframework.ui.ModelMap)
+18:00:59,134  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/comments],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.CommentController.add(uz.micros.jstore.entity.blog.Comment)
+18:00:59,151  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/delete/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.PostController.delete(int)
+18:00:59,169  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.PostController.save(uz.micros.jstore.entity.blog.Post)
+18:00:59,184  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/create],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.blog.PostController.create(org.springframework.ui.ModelMap)
+18:00:59,200  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.PostController.getPost(int)
+18:00:59,216  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/edit/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.blog.PostController.edit(org.springframework.ui.ModelMap,int)
+18:00:59,233  INFO RequestMappingHandlerMapping:197 - Mapped "{[/],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.IndexController.home()
+18:00:59,245  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/delete/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.store.BooksController.delete(int)
+18:00:59,257  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.save(uz.micros.jstore.entity.store.Book,org.springframework.validation.BindingResult,org.springframework.web.multipart.MultipartFile)
+18:00:59,272  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/create/{genreId}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.create(int)
+18:00:59,284  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/edit/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.edit(int)
+18:00:59,295  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.details(int)
+18:00:59,307  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/genres/{id}/**],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.GenresController.getBooks(int)
+18:00:59,336  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:00:59,347  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/resources/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:00:59,525  INFO ContextLoader:325 - Root WebApplicationContext: initialization completed in 2944 ms
+18:00:59,572  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+18:00:59,584  INFO AnnotationConfigWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat Aug 23 18:00:59 UZT 2014]; parent: Root WebApplicationContext
+18:00:59,597  INFO AnnotationConfigWebApplicationContext:208 - Registering annotated classes: [class uz.micros.jstore.config.WebMvcConfig]
+18:00:59,645  WARN ConfigurationClassEnhancer:304 - @Bean method AppConfig.getPropertyPlaceholderConfigurer is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean Javadoc for complete details
+18:00:59,670  INFO PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+18:00:59,689  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+18:00:59,729  INFO LocalContainerEntityManagerFactoryBean:332 - Building JPA container EntityManagerFactory for persistence unit 'default'
+18:00:59,763  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+18:00:59,772  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+18:00:59,796  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+18:00:59,832  INFO SchemaUpdate:182 - HHH000228: Running hbm2ddl schema update
+18:00:59,837  INFO SchemaUpdate:193 - HHH000102: Fetching database metadata
+18:00:59,841  INFO SchemaUpdate:205 - HHH000396: Updating schema
+18:00:59,852  INFO TableMetadata:66 - HHH000261: Table found: jstore.books
+18:00:59,856  INFO TableMetadata:67 - HHH000037: Columns: [pages, year, price, isbn, description, id, author_id, title, genre_id, series_id]
+18:00:59,863  INFO TableMetadata:69 - HHH000108: Foreign keys: [fk_65fm4ipog0u9y8obtm60r1e8u, fk_73o0d4iiu58livxbr7m3yl3qj, fk_s6osj27ckh3bidng4qku1oes]
+18:00:59,871  INFO TableMetadata:70 - HHH000126: Indexes: [uk_ao322efrqvfag6grrkctx03jn, fk_65fm4ipog0u9y8obtm60r1e8u, fk_73o0d4iiu58livxbr7m3yl3qj, fk_s6osj27ckh3bidng4qku1oes, primary]
+18:00:59,888  INFO TableMetadata:66 - HHH000261: Table found: jstore.genres
+18:00:59,892  INFO TableMetadata:67 - HHH000037: Columns: [description, id, title]
+18:00:59,899  INFO TableMetadata:69 - HHH000108: Foreign keys: []
+18:00:59,902  INFO TableMetadata:70 - HHH000126: Indexes: [uk_tn7o6am80axewhek380yntaav, primary]
+18:00:59,915  INFO TableMetadata:66 - HHH000261: Table found: jstore.authors
+18:00:59,918  INFO TableMetadata:67 - HHH000037: Columns: [name, id]
+18:00:59,922  INFO TableMetadata:69 - HHH000108: Foreign keys: []
+18:00:59,926  INFO TableMetadata:70 - HHH000126: Indexes: [uk_9mhkwvnfaarcalo4noabrin5j, primary]
+18:00:59,939  INFO TableMetadata:66 - HHH000261: Table found: jstore.comments
+18:00:59,943  INFO TableMetadata:67 - HHH000037: Columns: [date, post_id, author, id, text]
+18:00:59,949  INFO TableMetadata:69 - HHH000108: Foreign keys: [fk_2ocgo3lfadb3wq0tx8wyt7sj2]
+18:00:59,956  INFO TableMetadata:70 - HHH000126: Indexes: [fk_2ocgo3lfadb3wq0tx8wyt7sj2, primary]
+18:00:59,969  INFO TableMetadata:66 - HHH000261: Table found: jstore.posts
+18:00:59,973  INFO TableMetadata:67 - HHH000037: Columns: [date, author, subject, id, text]
+18:00:59,980  INFO TableMetadata:69 - HHH000108: Foreign keys: []
+18:00:59,984  INFO TableMetadata:70 - HHH000126: Indexes: [primary]
+18:00:59,994  INFO TableMetadata:66 - HHH000261: Table found: jstore.series
+18:00:59,998  INFO TableMetadata:67 - HHH000037: Columns: [description, id, title, genre_id]
+18:01:00,005  INFO TableMetadata:69 - HHH000108: Foreign keys: [fk_olu2mv1qpydxk2uypsx2h9rls]
+18:01:00,011  INFO TableMetadata:70 - HHH000126: Indexes: [uk_hsvdwda43ces5322tlgcgl4sk, fk_olu2mv1qpydxk2uypsx2h9rls, primary]
+18:01:00,018  INFO SchemaUpdate:242 - HHH000232: Schema update complete
+18:01:00,028  WARN EntityManagerFactoryRegistry:80 - HHH000436: Entity manager factory name (default) is already registered.  If entity manager will be clustered or passivated, specify a unique value for property 'hibernate.ejb.entitymanager_factory_name'
+18:01:00,110  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.blog.BlogController.blogIndex(org.springframework.ui.ModelMap)
+18:01:00,125  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/comments],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.CommentController.add(uz.micros.jstore.entity.blog.Comment)
+18:01:00,144  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/delete/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.PostController.delete(int)
+18:01:00,160  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.PostController.save(uz.micros.jstore.entity.blog.Post)
+18:01:00,176  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/create],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.blog.PostController.create(org.springframework.ui.ModelMap)
+18:01:00,189  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.PostController.getPost(int)
+18:01:00,208  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/edit/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.blog.PostController.edit(org.springframework.ui.ModelMap,int)
+18:01:00,227  INFO RequestMappingHandlerMapping:197 - Mapped "{[/],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.IndexController.home()
+18:01:00,240  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/delete/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.store.BooksController.delete(int)
+18:01:00,257  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.save(uz.micros.jstore.entity.store.Book,org.springframework.validation.BindingResult,org.springframework.web.multipart.MultipartFile)
+18:01:00,276  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/create/{genreId}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.create(int)
+18:01:00,292  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/edit/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.edit(int)
+18:01:00,308  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.details(int)
+18:01:00,325  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/genres/{id}/**],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.GenresController.getBooks(int)
+18:01:00,346  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:01:00,360  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/resources/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:01:00,404  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 824 ms
+18:01:05,537  INFO AnnotationConfigWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat Aug 23 18:00:59 UZT 2014]; parent: Root WebApplicationContext
+18:01:05,582  INFO AnnotationConfigWebApplicationContext:873 - Closing Root WebApplicationContext: startup date [Sat Aug 23 18:00:56 UZT 2014]; root of context hierarchy
+18:01:11,277  INFO ContextLoader:285 - Root WebApplicationContext: initialization started
+18:01:11,292  INFO AnnotationConfigWebApplicationContext:513 - Refreshing Root WebApplicationContext: startup date [Sat Aug 23 18:01:11 UZT 2014]; root of context hierarchy
+18:01:11,332  INFO AnnotationConfigWebApplicationContext:208 - Registering annotated classes: [class uz.micros.jstore.config.AppConfig]
+18:01:11,561  WARN ConfigurationClassEnhancer:304 - @Bean method AppConfig.getPropertyPlaceholderConfigurer is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean Javadoc for complete details
+18:01:11,591  INFO PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+18:01:11,611  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+18:01:11,793  INFO LocalContainerEntityManagerFactoryBean:332 - Building JPA container EntityManagerFactory for persistence unit 'default'
+18:01:11,857  INFO Version:54 - HHH000412: Hibernate Core {4.3.5.Final}
+18:01:11,862  INFO Environment:239 - HHH000206: hibernate.properties not found
+18:01:11,867  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+18:01:12,009  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+18:01:12,307  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+18:01:12,320  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+18:01:12,419  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+18:01:12,714  INFO SchemaUpdate:182 - HHH000228: Running hbm2ddl schema update
+18:01:12,718  INFO SchemaUpdate:193 - HHH000102: Fetching database metadata
+18:01:12,724  INFO SchemaUpdate:205 - HHH000396: Updating schema
+18:01:12,742  INFO TableMetadata:66 - HHH000261: Table found: jstore.books
+18:01:12,745  INFO TableMetadata:67 - HHH000037: Columns: [pages, year, price, isbn, description, id, author_id, title, genre_id, series_id]
+18:01:12,751  INFO TableMetadata:69 - HHH000108: Foreign keys: [fk_65fm4ipog0u9y8obtm60r1e8u, fk_73o0d4iiu58livxbr7m3yl3qj, fk_s6osj27ckh3bidng4qku1oes]
+18:01:12,757  INFO TableMetadata:70 - HHH000126: Indexes: [uk_ao322efrqvfag6grrkctx03jn, fk_65fm4ipog0u9y8obtm60r1e8u, fk_73o0d4iiu58livxbr7m3yl3qj, fk_s6osj27ckh3bidng4qku1oes, primary]
+18:01:12,772  INFO TableMetadata:66 - HHH000261: Table found: jstore.genres
+18:01:12,776  INFO TableMetadata:67 - HHH000037: Columns: [description, id, title]
+18:01:12,782  INFO TableMetadata:69 - HHH000108: Foreign keys: []
+18:01:12,785  INFO TableMetadata:70 - HHH000126: Indexes: [uk_tn7o6am80axewhek380yntaav, primary]
+18:01:12,797  INFO TableMetadata:66 - HHH000261: Table found: jstore.authors
+18:01:12,801  INFO TableMetadata:67 - HHH000037: Columns: [name, id]
+18:01:12,804  INFO TableMetadata:69 - HHH000108: Foreign keys: []
+18:01:12,807  INFO TableMetadata:70 - HHH000126: Indexes: [uk_9mhkwvnfaarcalo4noabrin5j, primary]
+18:01:12,819  INFO TableMetadata:66 - HHH000261: Table found: jstore.comments
+18:01:12,822  INFO TableMetadata:67 - HHH000037: Columns: [date, post_id, author, id, text]
+18:01:12,828  INFO TableMetadata:69 - HHH000108: Foreign keys: [fk_2ocgo3lfadb3wq0tx8wyt7sj2]
+18:01:12,834  INFO TableMetadata:70 - HHH000126: Indexes: [fk_2ocgo3lfadb3wq0tx8wyt7sj2, primary]
+18:01:12,846  INFO TableMetadata:66 - HHH000261: Table found: jstore.posts
+18:01:12,849  INFO TableMetadata:67 - HHH000037: Columns: [date, author, subject, id, text]
+18:01:12,855  INFO TableMetadata:69 - HHH000108: Foreign keys: []
+18:01:12,859  INFO TableMetadata:70 - HHH000126: Indexes: [primary]
+18:01:12,868  INFO TableMetadata:66 - HHH000261: Table found: jstore.series
+18:01:12,872  INFO TableMetadata:67 - HHH000037: Columns: [description, id, title, genre_id]
+18:01:12,878  INFO TableMetadata:69 - HHH000108: Foreign keys: [fk_olu2mv1qpydxk2uypsx2h9rls]
+18:01:12,883  INFO TableMetadata:70 - HHH000126: Indexes: [uk_hsvdwda43ces5322tlgcgl4sk, fk_olu2mv1qpydxk2uypsx2h9rls, primary]
+18:01:12,890  INFO SchemaUpdate:242 - HHH000232: Schema update complete
+18:01:13,379  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.blog.BlogController.blogIndex(org.springframework.ui.ModelMap)
+18:01:13,395  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/comments],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.CommentController.add(uz.micros.jstore.entity.blog.Comment)
+18:01:13,416  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/delete/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.PostController.delete(int)
+18:01:13,436  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.PostController.save(uz.micros.jstore.entity.blog.Post)
+18:01:13,453  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/create],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.blog.PostController.create(org.springframework.ui.ModelMap)
+18:01:13,471  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.PostController.getPost(int)
+18:01:13,489  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/edit/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.blog.PostController.edit(org.springframework.ui.ModelMap,int)
+18:01:13,506  INFO RequestMappingHandlerMapping:197 - Mapped "{[/],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.IndexController.home()
+18:01:13,521  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/delete/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.store.BooksController.delete(int)
+18:01:13,539  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.save(uz.micros.jstore.entity.store.Book,org.springframework.validation.BindingResult,org.springframework.web.multipart.MultipartFile)
+18:01:13,560  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/create/{genreId}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.create(int)
+18:01:13,577  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/edit/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.edit(int)
+18:01:13,593  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.details(int)
+18:01:13,611  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/genres/{id}/**],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.GenresController.getBooks(int)
+18:01:13,645  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:01:13,658  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/resources/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:01:13,785  INFO ContextLoader:325 - Root WebApplicationContext: initialization completed in 2498 ms
+18:01:13,839  INFO DispatcherServlet:479 - FrameworkServlet 'dispatcher': initialization started
+18:01:13,854  INFO AnnotationConfigWebApplicationContext:513 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat Aug 23 18:01:13 UZT 2014]; parent: Root WebApplicationContext
+18:01:13,869  INFO AnnotationConfigWebApplicationContext:208 - Registering annotated classes: [class uz.micros.jstore.config.WebMvcConfig]
+18:01:13,927  WARN ConfigurationClassEnhancer:304 - @Bean method AppConfig.getPropertyPlaceholderConfigurer is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean Javadoc for complete details
+18:01:13,951  INFO PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+18:01:13,967  INFO AutowiredAnnotationBeanPostProcessor:141 - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+18:01:14,013  INFO LocalContainerEntityManagerFactoryBean:332 - Building JPA container EntityManagerFactory for persistence unit 'default'
+18:01:14,054  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+18:01:14,063  INFO LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+18:01:14,086  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+18:01:14,124  INFO SchemaUpdate:182 - HHH000228: Running hbm2ddl schema update
+18:01:14,129  INFO SchemaUpdate:193 - HHH000102: Fetching database metadata
+18:01:14,133  INFO SchemaUpdate:205 - HHH000396: Updating schema
+18:01:14,143  INFO TableMetadata:66 - HHH000261: Table found: jstore.books
+18:01:14,147  INFO TableMetadata:67 - HHH000037: Columns: [pages, year, price, isbn, description, id, author_id, title, genre_id, series_id]
+18:01:14,153  INFO TableMetadata:69 - HHH000108: Foreign keys: [fk_65fm4ipog0u9y8obtm60r1e8u, fk_73o0d4iiu58livxbr7m3yl3qj, fk_s6osj27ckh3bidng4qku1oes]
+18:01:14,159  INFO TableMetadata:70 - HHH000126: Indexes: [uk_ao322efrqvfag6grrkctx03jn, fk_65fm4ipog0u9y8obtm60r1e8u, fk_73o0d4iiu58livxbr7m3yl3qj, fk_s6osj27ckh3bidng4qku1oes, primary]
+18:01:14,175  INFO TableMetadata:66 - HHH000261: Table found: jstore.genres
+18:01:14,178  INFO TableMetadata:67 - HHH000037: Columns: [description, id, title]
+18:01:14,184  INFO TableMetadata:69 - HHH000108: Foreign keys: []
+18:01:14,187  INFO TableMetadata:70 - HHH000126: Indexes: [uk_tn7o6am80axewhek380yntaav, primary]
+18:01:14,199  INFO TableMetadata:66 - HHH000261: Table found: jstore.authors
+18:01:14,202  INFO TableMetadata:67 - HHH000037: Columns: [name, id]
+18:01:14,206  INFO TableMetadata:69 - HHH000108: Foreign keys: []
+18:01:14,209  INFO TableMetadata:70 - HHH000126: Indexes: [uk_9mhkwvnfaarcalo4noabrin5j, primary]
+18:01:14,221  INFO TableMetadata:66 - HHH000261: Table found: jstore.comments
+18:01:14,225  INFO TableMetadata:67 - HHH000037: Columns: [date, post_id, author, id, text]
+18:01:14,230  INFO TableMetadata:69 - HHH000108: Foreign keys: [fk_2ocgo3lfadb3wq0tx8wyt7sj2]
+18:01:14,236  INFO TableMetadata:70 - HHH000126: Indexes: [fk_2ocgo3lfadb3wq0tx8wyt7sj2, primary]
+18:01:14,248  INFO TableMetadata:66 - HHH000261: Table found: jstore.posts
+18:01:14,251  INFO TableMetadata:67 - HHH000037: Columns: [date, author, subject, id, text]
+18:01:14,257  INFO TableMetadata:69 - HHH000108: Foreign keys: []
+18:01:14,261  INFO TableMetadata:70 - HHH000126: Indexes: [primary]
+18:01:14,270  INFO TableMetadata:66 - HHH000261: Table found: jstore.series
+18:01:14,274  INFO TableMetadata:67 - HHH000037: Columns: [description, id, title, genre_id]
+18:01:14,280  INFO TableMetadata:69 - HHH000108: Foreign keys: [fk_olu2mv1qpydxk2uypsx2h9rls]
+18:01:14,286  INFO TableMetadata:70 - HHH000126: Indexes: [uk_hsvdwda43ces5322tlgcgl4sk, fk_olu2mv1qpydxk2uypsx2h9rls, primary]
+18:01:14,293  INFO SchemaUpdate:242 - HHH000232: Schema update complete
+18:01:14,302  WARN EntityManagerFactoryRegistry:80 - HHH000436: Entity manager factory name (default) is already registered.  If entity manager will be clustered or passivated, specify a unique value for property 'hibernate.ejb.entitymanager_factory_name'
+18:01:14,408  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.blog.BlogController.blogIndex(org.springframework.ui.ModelMap)
+18:01:14,423  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/comments],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.CommentController.add(uz.micros.jstore.entity.blog.Comment)
+18:01:14,439  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/delete/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.PostController.delete(int)
+18:01:14,454  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.PostController.save(uz.micros.jstore.entity.blog.Post)
+18:01:14,469  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/create],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.blog.PostController.create(org.springframework.ui.ModelMap)
+18:01:14,482  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.blog.PostController.getPost(int)
+18:01:14,496  INFO RequestMappingHandlerMapping:197 - Mapped "{[/blog/posts/edit/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.blog.PostController.edit(org.springframework.ui.ModelMap,int)
+18:01:14,508  INFO RequestMappingHandlerMapping:197 - Mapped "{[/],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.IndexController.home()
+18:01:14,517  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/delete/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String uz.micros.jstore.controller.store.BooksController.delete(int)
+18:01:14,528  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.save(uz.micros.jstore.entity.store.Book,org.springframework.validation.BindingResult,org.springframework.web.multipart.MultipartFile)
+18:01:14,541  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/create/{genreId}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.create(int)
+18:01:14,552  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/edit/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.edit(int)
+18:01:14,563  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/books/{id}],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.BooksController.details(int)
+18:01:14,573  INFO RequestMappingHandlerMapping:197 - Mapped "{[/store/genres/{id}/**],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView uz.micros.jstore.controller.store.GenresController.getBooks(int)
+18:01:14,587  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:01:14,597  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/resources/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:01:14,641  INFO DispatcherServlet:498 - FrameworkServlet 'dispatcher': initialization completed in 791 ms
+18:01:45,467  INFO TemplateEngine:825 - [THYMELEAF] INITIALIZING TEMPLATE ENGINE
+18:01:45,509  INFO AbstractTemplateResolver:99 - [THYMELEAF] INITIALIZING TEMPLATE RESOLVER: org.thymeleaf.templateresolver.ServletContextTemplateResolver
+18:01:45,516  INFO AbstractTemplateResolver:110 - [THYMELEAF] TEMPLATE RESOLVER INITIALIZED OK
+18:01:45,523  INFO AbstractMessageResolver:72 - [THYMELEAF] INITIALIZING MESSAGE RESOLVER: org.thymeleaf.spring4.messageresolver.SpringMessageResolver
+18:01:45,530  INFO AbstractMessageResolver:78 - [THYMELEAF] MESSAGE RESOLVER INITIALIZED OK
+18:01:45,571  INFO TemplateEngine:838 - [THYMELEAF] TEMPLATE ENGINE INITIALIZED
+18:02:19,233  WARN PageNotFound:1114 - No mapping found for HTTP request with URI [/favicon.ico] in DispatcherServlet with name 'dispatcher'
+19:01:42,314  INFO AnnotationConfigWebApplicationContext:873 - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat Aug 23 18:01:13 UZT 2014]; parent: Root WebApplicationContext
+19:01:42,351  INFO AnnotationConfigWebApplicationContext:873 - Closing Root WebApplicationContext: startup date [Sat Aug 23 18:01:11 UZT 2014]; root of context hierarchy
